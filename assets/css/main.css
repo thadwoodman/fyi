@@ -1,0 +1,31 @@
+body {
+  border: 20px solid #ff930f; }
+  body h1, body h2, body h3, body h4, body h5 {
+    font-family: "Coustard", serif;
+    font-weight: 900; }
+  body h2 {
+    border-top: 4px solid black; }
+  body .page-container {
+    max-width: 1000px;
+    margin: 0 auto; }
+  body .social-links-container .social-link {
+    color: rgba(1, 1, 1, 0.2);
+    padding: 5px 10px;
+    display: inline-block; }
+    body .social-links-container .social-link:hover {
+      text-decoration: none; }
+  body header {
+    text-align: center;
+    margin: 100px auto; }
+    body header .image-container img.profile-pic {
+      border: 5px solid white;
+      border-radius: 50%;
+      max-width: 200px;
+      box-shadow: 1px 1px 5px rgba(1, 1, 1, 0.4);
+      margin-bottom: 25px; }
+  body section {
+    margin: 50px auto; }
+  body .mini-profile {
+    text-align: center; }
+
+/*# sourceMappingURL=main.css.map */
