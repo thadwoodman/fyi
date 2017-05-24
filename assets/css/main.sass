@@ -38,35 +38,40 @@ body
           display: block
           text-decoration: underline
 
-  .page-container
-    margin: 0 auto 0 300px 
+  .book
+    padding-left: 300px 
     width: 100%
+    height: 100%
+    position: absolute
     .chapter
+      background: #f2fbe5
       display: flex
       flex-wrap: nowrap
       overflow-x: auto
-      -webkit-overflow-scrolling: touch
-      -ms-overflow-style: -ms-autohiding-scrollbar
       height: 500px 
-      position: absolute
       width: 100%
       height: 100%
+      align-items: center
+      position: relative
       .page
-        flex: 0 0 auto
-        min-width: 200px
-        margin: 25px 10%
-        width: 66%
-        padding-bottom: 66%
-        max-width: 300px
-        min-height: 400px
+        opacity: .2
+        min-height: 500px
+        min-width: 300px 
         max-height: 500px
-        float: left
+        max-width: 300px 
+        height: 500px
+        width: 300px 
+        overflow: hidden
         padding: 25px
+        background: white
+        border-radius: 10px
         border: 1px sold whitesmoke
-        box-shadow: 1px 1px 10px rgba(1,1,1,.5)
+        box-shadow: 1px 1px 5px rgba(1,1,1,.5)
         h1.chapter-header
           border-bottom: 2px solid black
           margin-bottom: 50px
+        &.active
+          opacity: 1
 
   .social-links-container
     position: absolute
