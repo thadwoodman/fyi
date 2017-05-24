@@ -18,92 +18,51 @@
     <link href="https://fonts.googleapis.com/css?family=Coustard:400" rel="stylesheet">
   </head>
   <body>
-    <div class="page-container">
+    <nav class='main-menu'>
+      <div class="image-container">
+        <img src="assets/imgs/mug.jpg" class='profile-pic'>
+      </div>
+      <h1>Thad Woodman</h1>
+      <div class="chapter-list-container">
+        <div class="chapter-list-title">Chapters:</div>
+        <ol class='chapter-list'>
+          <li> <a href="/about_me" data-behavior='get-chapter'>About Me</a> </li>
+          <li> <a href="/professional" data-behavior='get-chapter'>Professional</a> </li>
+          <li> <a href="/amateur" data-behavior='get-chapter'>Amateur</a> </li>
+        </ol>
+      </div>
       <div class="social-links-container">
         <a href="http://linkedin.com/thad-woodman" class='social-link' target="_blank">Linked In</a>
         <a href="http://angel.co/thad-woodman" class='social-link' target="_blank">AngelList</a>
         <a href="http://twitter.com/@thad_jo" class='social-link' target="_blank">@thad_jo</a>
       </div>
-      <header>
-        <div class="image-container">
-          <img src="assets/imgs/mug.jpg" class='profile-pic'>
+    </nav>
+    <div class="page-container">
+      <div class="chapter" data-chapter="About me">
+
+        <div class="page">
+          <h1 class='chapter-header'>Hi, I'm Thad.</h1>
+          <p>I've spent the last four years building my company Inkshares from the ground up.  I'm passionate about building products that people love.</p> 
         </div>
-        <h1>Thad Woodman</h1>
-        <div class="brief">A little about me.</div>
-      </header>
-      <div class="row">
-        <div class="col-sm-12 primary-content">
-          <section>
-            <h2>Life Summary</h2>
-            <div class='summary'>
-              <div class="summary-item"> Born in Oakland </div>
-              <div class="summary-item"> Grew up in North Carolina </div>
-              <div class="summary-item"> Studied Philosophy at Reed </div>
-              <div class="summary-item"> Economic Analyst and project manager in Seattle </div>
-              <div class="summary-item"> Ditto in Brooklyn </div>
-              <div class="summary-item"> Founded Inkshares in San Francisco </div>
-              <div class="summary-item"> Currently lives in Oakland </div>
-            <div>
-          </section>
-          <!-- end summary -->
 
-          <section>
-            <h2>Professional Skills</h2>
-            <div class='professsional-skills'>
-              <pre>      
-        code: {
-          web_frameworks: {
-            rails: {
-
-            },
-            flask: {
-
-            },
-            phoenix: {
-
-            },
-          },
-          machine_learning: {
-            lightFM: {
-              use_case: "collaborative filtering for recommendations",
-            },
-            octave: {
-
-            },
-            python: {
-
-            }
-          },
-          ops: {
-            heroku: ['optimization', 'db_config (followers / upgrades)']
-            aws: ['ec2', 's3', 'cloudfront'],
-            newrelic:
-            mixpanel:
-            google_analytics:
-            algolia:
-            segment_io:
-            memcache:
-          }
-        }
-              </pre>
-            </div>
-            <h2>Product Management & Design</h2>
-            <div class='professsional-skills'>
-              <h3>Agile Development</h3>
-              <h3>UX/UI</h3>
-              <h3>Misc</h3>
-            </div>
-          </section>
-          <section>    
-            <h2>Amateur Skills</h2>
-            <h3>Heavy Metal</h3>
-            <h3>Bluegrass</h3>
-            <h3>BMX</h3>
-            <h3>Cooking</h3>
-            <h3>Dog Training</h3>
-          </section>
+        <div class="page">
+          <p>I was born in Oakland. My parents met in Berkeley and started a publishing company. </p>
         </div>
+
+        <div class="page">
+          <p>I was raised in NC.  Best goddamn state in the union.</p>
+        </div>
+
+        <div class="page">
+          <p>I studied Philosophy and Economics at Reed. Here is my senior thesis on the metaphysics of material composition and the philosophy of language.</p>
+        </div>
+
+        <div class="page">
+          <p>After college I was an analyst and project manager at an economic consulting firm in Seattle.  Although most of our analyses were for our clients here is a research paper I did on wage disparities between the public and private sector.</p>
+        </div>
+
       </div>
+      <!-- end chapter -->
     </div>
   </body>
   <script type="text/javascript" src='assets/js/main.js'></script>

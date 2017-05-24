@@ -21,6 +21,19 @@ body {
       max-width: 200px;
       box-shadow: 1px 1px 5px rgba(1, 1, 1, 0.4);
       margin-bottom: 25px; }
+    body nav.main-menu .chapter-list-container {
+      max-width: 200px;
+      margin: 0 auto;
+      text-align: left; }
+      body nav.main-menu .chapter-list-container .chapter-list-title {
+        text-transform: uppercase;
+        letter-spacing: 2px; }
+      body nav.main-menu .chapter-list-container ol.chapter-list a {
+        font-family: "Coustard", serif;
+        font-weight: bold;
+        color: black;
+        display: block;
+        text-decoration: underline; }
   body .page-container {
     margin: 0 auto 0 300px;
     width: 100%; }
@@ -37,7 +50,7 @@ body {
       body .page-container .chapter .page {
         flex: 0 0 auto;
         min-width: 200px;
-        margin: 25px 25%;
+        margin: 25px 10%;
         width: 66%;
         padding-bottom: 66%;
         max-width: 300px;
@@ -50,12 +63,17 @@ body {
         body .page-container .chapter .page h1.chapter-header {
           border-bottom: 2px solid black;
           margin-bottom: 50px; }
-  body .social-links-container .social-link {
-    color: rgba(1, 1, 1, 0.2);
-    padding: 5px 10px;
-    display: inline-block; }
-    body .social-links-container .social-link:hover {
-      text-decoration: none; }
+  body .social-links-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px; }
+    body .social-links-container .social-link {
+      color: rgba(1, 1, 1, 0.2);
+      padding: 5px;
+      display: inline-block; }
+      body .social-links-container .social-link:hover {
+        text-decoration: none; }
   body section {
     margin: 50px auto; }
   body .mini-profile {

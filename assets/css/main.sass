@@ -7,6 +7,7 @@ body
     font-family: 'Coustard', serif
   h2
     border-top: 4px solid black
+
   nav.main-menu
     position: fixed
     background: white
@@ -21,6 +22,22 @@ body
       max-width: 200px
       box-shadow: 1px 1px 5px rgba(1,1,1,.4)
       margin-bottom: 25px
+    .chapter-list-container
+      max-width: 200px
+      margin: 0 auto
+      text-align: left
+      .chapter-list-title
+        text-transform: uppercase
+        letter-spacing: 2px
+      ol.chapter-list
+
+        a
+          font-family: 'Coustard', serif
+          font-weight: bold
+          color: black
+          display: block
+          text-decoration: underline
+
   .page-container
     margin: 0 auto 0 300px 
     width: 100%
@@ -37,7 +54,7 @@ body
       .page
         flex: 0 0 auto
         min-width: 200px
-        margin: 25px 25%
+        margin: 25px 10%
         width: 66%
         padding-bottom: 66%
         max-width: 300px
@@ -52,9 +69,13 @@ body
           margin-bottom: 50px
 
   .social-links-container
+    position: absolute
+    bottom: 0
+    left: 0
+    padding: 5px
     .social-link
       color: rgba(1, 1, 1, .2)
-      padding: 5px 10px
+      padding: 5px
       display: inline-block
       &:hover
         text-decoration: none
