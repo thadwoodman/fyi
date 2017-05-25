@@ -11,7 +11,6 @@ $(function(){
 
       var chapterName = chapter.data().name;
       var pages       = chapter.children('.page');
-      makeActive(); // makes first page active by default
 
       //initialize chapter header
       var chapterHeader = $('<div>').addClass('chapter-header').append(
@@ -21,17 +20,22 @@ $(function(){
       )
       pages.eq(0).prepend(chapterHeader);
 
-      //initialize page counter
-      var pageCounter = $('<div>').addClass('page-counter');
-      chapter.prepend(pageCounter);
-
-      updatePageCounter();
-
-
       // setup each page
       $.each(pages, function(index,page){
         initializePage(page);
+        chapter.append(page);
       });
+
+      //construct leafs (sets of pages)
+
+      var leafTemplate = $('<div>').addClass('leaf ');
+      pages.first().wrap(leafTemplate);
+      for(var i = 1; i < pages.length; i+=2) {
+        pages.slice(i, i+2).wrapAll(leafTemplate.css({"z-index": -i}));
+      }
+
+      var leafs = $('.leaf');
+      leafs.first().addClass('flipped');
 
       // scroll to next on key down
       $(window).on('keydown', function(e){
@@ -60,71 +64,53 @@ $(function(){
       $(pages).on('click', function(){
         var page = $(this);
         var position = pages.index(page);
-        moveToPage(position);
+        moveToLeaf(position);
       })
 
 
       // move to the next page
       function nextPage(){
-        moveToPage(currentPosition() + 1);
+        var lastFlipped = $('.leaf.flipped').last();
+        var lastFlippedIndex = leafs.index(lastFlipped);
+        var flipNext = leafs.eq(lastFlippedIndex + 1);
+
+        flipNext.addClass('flipped');
       }
 
       function previousPage(){
-        moveToPage(currentPosition() - 1); 
+        var lastFlipped = $('.leaf.flipped').last();
+        lastFlipped.removeClass('flipped');
       }
 
       // get current position
       function currentPosition(){
-        var activePage = $('.page.active');
+        var activePage = $('.leaf');
         var position = pages.index(activePage);
         return position;
       }
 
-      // scroll to page and make active
-      function moveToPage(pagePosition){
-        var page = pages.eq(pagePosition)
-        // make page active
-        makeActive(page);
-        // scroll to page
+      // move to Leaf
+      function moveToLeaf(leafPosition){
 
-        // should equal [left offset of page] - [page width] + current position - initial buffer
-        var scrollDistance = ( 
-            chapter.scrollLeft() 
-          + page.offset().left 
-          - page.outerWidth()
-          - parseInt(page.css('margin-left'))
-        );
-        $(chapter).animate({scrollLeft: scrollDistance}, 250, 'swing', function(){
-          //callback
-          updatePageCounter();
-        });
+
+  
       }
 
-      //assign active class to page
-      function makeActive(page){
-        pages.removeClass('active');
-        if (page){
-          page.addClass('active');
-        }
-        else{
-          pages.first().addClass('active');
-        }
-      }
 
-      // updates counter
-      function updatePageCounter(){
-        pageCounter.html((currentPosition() + 1) +  " / " + pages.length);
-      }
 
       function initializePage(page){
 
-        // create buffer in margin to center each page
-        // var centeringBuffer = ((chapter.outerWidth() - $(page).outerWidth()) / 2); 
-        // var margin = "0px " + centeringBuffer + "px";
-        // $(page).css({margin: margin});
-
-        //
         var pageNumber = pages.index(page) + 1;
+
+        //wrap page in container and assign recto / verso to class
+        if (pageNumber % 2 == 0){
+          var rectoVerso = 'recto';
+        }
+        else{
+          var rectoVerso = 'verso';
+        }
+        $(page).addClass(rectoVerso);
+        // add header to page
         if (pageNumber > 1){
           var numberEl = $('<span>').addClass('page-number').html(pageNumber);
           var chapterNameEl = $('<span>').addClass('chapter-name').html(chapterName);
