@@ -31,11 +31,12 @@ $(function(){
       var leafTemplate = $('<div>').addClass('leaf ');
       pages.first().wrap(leafTemplate);
       for(var i = 1; i < pages.length; i+=2) {
-        pages.slice(i, i+2).wrapAll(leafTemplate.css({"z-index": -i}));
+        pages.slice(i, i+2).wrapAll(leafTemplate);
       }
 
       var leafs = $('.leaf');
       leafs.first().addClass('flipped');
+      updateZindicies();
 
       // scroll to next on key down
       $(window).on('keydown', function(e){
@@ -61,11 +62,13 @@ $(function(){
       });
 
       //scroll to element on click
-      $(pages).on('click', function(){
-        var page = $(this);
-        var position = pages.index(page);
-        moveToLeaf(position);
-      })
+      $('.recto').on('click', function(){
+        nextPage();
+      });
+      $('.verso').on('click', function(){
+        previousPage();
+      });
+
 
 
       // move to the next page
@@ -75,11 +78,24 @@ $(function(){
         var flipNext = leafs.eq(lastFlippedIndex + 1);
 
         flipNext.addClass('flipped');
+        updateZindicies();
       }
 
       function previousPage(){
         var lastFlipped = $('.leaf.flipped').last();
         lastFlipped.removeClass('flipped');
+        updateZindicies();
+      }
+
+      function updateZindicies(){
+        var flipped = $('.flipped');
+        $.each(flipped, function(index){
+          $(this).css({"z-index": index})
+        });
+       var notFlipped = $('.leaf:not(.flipped)');
+       $.each(notFlipped, function(index){
+         $(this).css({"z-index": (index*-1)})
+       }); 
       }
 
       // get current position
