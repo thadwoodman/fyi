@@ -21,6 +21,12 @@ $(function(){
       )
       pages.eq(0).prepend(chapterHeader);
 
+      //initialize page counter
+      var pageCounter = $('<div>').addClass('page-counter');
+      chapter.prepend(pageCounter);
+
+      updatePageCounter();
+
 
       // setup each page
       $.each(pages, function(index,page){
@@ -81,17 +87,17 @@ $(function(){
         makeActive(page);
         // scroll to page
 
-        var currentScrollPos = chapter.scrollLeft();
         // should equal [left offset of page] - [page width] + current position - initial buffer
-
-        console.log("currentScrollPos: " + currentScrollPos +  " | page.offset().left:" + page.offset().left )
         var scrollDistance = ( 
-            currentScrollPos 
+            chapter.scrollLeft() 
           + page.offset().left 
           - page.outerWidth()
           - parseInt(page.css('margin-left'))
         );
-        $(chapter).animate({scrollLeft: scrollDistance}, 250, 'swing');
+        $(chapter).animate({scrollLeft: scrollDistance}, 250, 'swing', function(){
+          //callback
+          updatePageCounter();
+        });
       }
 
       //assign active class to page
@@ -105,12 +111,17 @@ $(function(){
         }
       }
 
+      // updates counter
+      function updatePageCounter(){
+        pageCounter.html((currentPosition() + 1) +  " / " + pages.length);
+      }
+
       function initializePage(page){
 
         // create buffer in margin to center each page
-        var centeringBuffer = ((chapter.outerWidth() - $(page).outerWidth()) / 2); 
-        var margin = "0px " + centeringBuffer + "px";
-        $(page).css({margin: margin});
+        // var centeringBuffer = ((chapter.outerWidth() - $(page).outerWidth()) / 2); 
+        // var margin = "0px " + centeringBuffer + "px";
+        // $(page).css({margin: margin});
 
         //
         var pageNumber = pages.index(page) + 1;
@@ -123,7 +134,7 @@ $(function(){
           page.prepend(pageHeader[0]);
         }
 
-      }
+      } // ends initializePage
 
     } // ends initializeChapter
   }
