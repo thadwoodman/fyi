@@ -40,7 +40,6 @@ body {
     height: 100%;
     position: absolute; }
     body .book .chapter {
-      background: #f2fbe5;
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
@@ -50,7 +49,7 @@ body {
       align-items: center;
       position: relative; }
       body .book .chapter .page {
-        opacity: 0.2;
+        color: rgba(1, 1, 1, 0.3);
         min-height: 500px;
         min-width: 300px;
         max-height: 500px;
@@ -63,11 +62,34 @@ body {
         border-radius: 10px;
         border: 1px sold whitesmoke;
         box-shadow: 1px 1px 5px rgba(1, 1, 1, 0.5); }
-        body .book .chapter .page h1.chapter-header {
-          border-bottom: 2px solid black;
-          margin-bottom: 50px; }
+        body .book .chapter .page .page-header {
+          font-size: 0.5em;
+          color: rgba(1, 1, 1, 0.4);
+          border-bottom: 1px solid rgba(1, 1, 1, 0.4);
+          text-align: right;
+          margin-bottom: 25px;
+          padding-bottom: 5px; }
+          body .book .chapter .page .page-header .chapter-name {
+            float: left; }
+        body .book .chapter .page .chapter-header {
+          text-align: center;
+          border-bottom: 1px solid black;
+          padding: 25px;
+          margin-bottom: 25px; }
+          body .book .chapter .page .chapter-header .chapter-number {
+            text-transform: uppercase;
+            letter-spacing: 2px; }
+          body .book .chapter .page .chapter-header .chapter-name {
+            font-family: "Coustard", serif;
+            font-size: 2em;
+            display: inline-block; }
         body .book .chapter .page.active {
-          opacity: 1; }
+          color: black;
+          border-color: black; }
+      body .book .chapter .page-counter {
+        position: absolute;
+        top: 0;
+        right: 0; }
   body .social-links-container {
     position: absolute;
     bottom: 0;
