@@ -42,17 +42,16 @@ body
 
   .book
     padding-left: 300px 
-    width: 100%
+    width: 100% 
     height: 100%
     position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
     .chapter
-      display: flex
-      flex-wrap: nowrap
-      overflow-x: auto
       height: 500px 
-      width: 100%
-      height: 100%
-      align-items: center
+      width: 600px
+      margin: 0 auto
       position: relative
       .leaf
         transform-style: preserve-3d
@@ -76,11 +75,20 @@ body
         padding: 25px
         background: white
         border-radius: 10px
-        box-shadow: 1px 1px 3px rgba(1,1,1,.5)
+        border: 1px solid rgba(1,1,1,.3)
         right: 0
         backface-visibility: hidden
+        &.recto
+          border-bottom-left-radius: 0px
+          border-top-left-radius: 0px
+          border-left: 0px
+          background: linear-gradient(to right, rgba(0,0,0,0.05) 0%,rgba(255, 255, 255, 1) 2%,rgba(255, 255, 255, 1) 100%)
         &.verso
           transform: rotateY(180deg)
+          border-bottom-right-radius: 0px
+          border-top-right-radius: 0px
+          border-right: 0px
+          background: linear-gradient(to left, rgba(0,0,0,0.05) 0%,rgba(255, 255, 255, 1) 2%,rgba(255, 255, 255, 1) 100%)
         .page-header
           font-size: .5em
           color: rgba(1,1,1,.4)

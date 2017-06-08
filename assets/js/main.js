@@ -12,7 +12,7 @@ $(function(){
       var chapterName = chapter.data().name;
       var pages       = chapter.children('.page');
 
-      //initialize chapter header
+      //construct and place chapter header
       var chapterHeader = $('<div>').addClass('chapter-header').append(
         $('<div>').addClass('chapter-number').html("Chapter " + chapter.data().number)
       ).append(
@@ -20,7 +20,7 @@ $(function(){
       )
       pages.eq(0).prepend(chapterHeader);
 
-      // setup each page
+      // setup and append each page to the chapter
       $.each(pages, function(index,page){
         initializePage(page);
         chapter.append(page);
@@ -73,45 +73,45 @@ $(function(){
 
       // move to the next page
       function nextPage(){
-        var lastFlipped = $('.leaf.flipped').last();
-        var lastFlippedIndex = leafs.index(lastFlipped);
-        var flipNext = leafs.eq(lastFlippedIndex + 1);
+        // check to make sure we are not at the end
+        if (currentPosition() <  (pages.length - 1)){
+          var lastFlipped = $('.leaf.flipped').last();
+          var lastFlippedIndex = leafs.index(lastFlipped);
+          var flipNext = leafs.eq(lastFlippedIndex + 1);
 
-        flipNext.addClass('flipped');
-        updateZindicies();
+          flipNext.addClass('flipped');
+          updateZindicies();
+        }
       }
 
       function previousPage(){
-        var lastFlipped = $('.leaf.flipped').last();
-        lastFlipped.removeClass('flipped');
-        updateZindicies();
+        // check to make sure we are not at the beginning
+        if (currentPosition() > 0 ){        
+          var lastFlipped = $('.leaf.flipped').last();
+          lastFlipped.removeClass('flipped');
+          updateZindicies(true);
+        }
       }
 
-      function updateZindicies(){
+      function updateZindicies(previous){
+        var previousBoost =  previous ? 1 : 0;
         var flipped = $('.flipped');
         $.each(flipped, function(index){
           $(this).css({"z-index": index})
         });
-       var notFlipped = $('.leaf:not(.flipped)');
-       $.each(notFlipped, function(index){
-         $(this).css({"z-index": (index*-1)})
-       }); 
+        var notFlipped = $('.leaf:not(.flipped)');
+        $.each(notFlipped, function(index){
+          $(this).css({"z-index": ((index*-1) + previousBoost)})
+        }); 
       }
 
       // get current position
       function currentPosition(){
-        var activePage = $('.leaf');
-        var position = pages.index(activePage);
+        var activeLeaf = $('.leaf.flipped').last();
+        var position = leafs.index(activeLeaf);
+        console.log(position)
         return position;
       }
-
-      // move to Leaf
-      function moveToLeaf(leafPosition){
-
-
-  
-      }
-
 
 
       function initializePage(page){
