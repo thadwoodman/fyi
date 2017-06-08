@@ -48,6 +48,7 @@ body {
       margin: 0 auto;
       position: relative; }
       body .book .chapter .leaf {
+        pointer-events: none;
         transform-style: preserve-3d;
         z-index: -10;
         min-width: 600px;
@@ -57,6 +58,7 @@ body {
         body .book .chapter .leaf.flipped {
           transform: rotateY(180deg); }
       body .book .chapter .page {
+        pointer-events: all;
         display: block;
         position: absolute;
         min-height: 500px;

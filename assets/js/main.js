@@ -12,6 +12,29 @@ $(function(){
       var chapterName = chapter.data().name;
       var pages       = chapter.children('.page');
 
+      //construct page flippers
+      var pageFlipper =  $('<div>').addClass('page-flipper').css({
+        "z-index": 99,
+        position: "absolute",
+        height: "100%",
+        width: "50px",
+      });
+      chapter.prepend(
+        pageFlipper.clone()
+        .css({left: 0}).attr("id", "left")
+        .on('mousedown', function(){
+          previousPage();
+        })
+      );
+      chapter.prepend(
+        pageFlipper.clone()
+        .css({right: 0}).attr("id", "right")
+        .on('mousedown', function(){
+          nextPage();
+        })
+      );
+
+
       //construct and place chapter header
       var chapterHeader = $('<div>').addClass('chapter-header').append(
         $('<div>').addClass('chapter-number').html("Chapter " + chapter.data().number)
@@ -61,13 +84,14 @@ $(function(){
         }
       });
 
-      //scroll to element on click
-      $('.recto').on('click', function(){
-        nextPage();
-      });
-      $('.verso').on('click', function(){
-        previousPage();
-      });
+      // //scroll to element on click
+      // $('.recto').on('click', function(){
+      //   nextPage();
+
+      // });
+      // $('.verso').on('click', function(){
+      //   previousPage();
+      // });
 
 
 
@@ -109,7 +133,6 @@ $(function(){
       function currentPosition(){
         var activeLeaf = $('.leaf.flipped').last();
         var position = leafs.index(activeLeaf);
-        console.log(position)
         return position;
       }
 

@@ -54,6 +54,7 @@ body
       margin: 0 auto
       position: relative
       .leaf
+        pointer-events: none
         transform-style: preserve-3d
         z-index: -10
         min-width: 600px
@@ -63,6 +64,7 @@ body
         &.flipped
           transform: rotateY(180deg)
       .page
+        pointer-events: all
         display: block
         position: absolute
         min-height: 500px
