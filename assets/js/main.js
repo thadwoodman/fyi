@@ -96,12 +96,12 @@ $(function(){
       function updateZindicies(previous){
         var previousBoost =  previous ? 1 : 0;
         var flipped = $('.flipped');
-        $.each(flipped, function(index){
-          $(this).css({"z-index": index})
+        $.each(flipped.get().reverse(), function(index){
+          $(this).css({"z-index": (index*-1)})
         });
         var notFlipped = $('.leaf:not(.flipped)');
         $.each(notFlipped, function(index){
-          $(this).css({"z-index": ((index*-1) + previousBoost)})
+          $(this).css({"z-index": ((index*-1) - 1 + previousBoost)})
         }); 
       }
 
