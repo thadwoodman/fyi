@@ -18,6 +18,7 @@ $(function(){
         position: "absolute",
         height: "100%",
         width: "50px",
+        cursor: "pointer"
       });
       chapter.prepend(
         pageFlipper.clone()
@@ -33,6 +34,11 @@ $(function(){
           nextPage();
         })
       );
+
+      /// test shit!
+      $('window').on('swipe', function(e){
+        console.log(e);
+      });
 
 
       //construct and place chapter header
